@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from 'react';
+import './style/App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import List from './componets/List';
+import Detail from './pages/Detail';
+import FormArea from './pages/FormArea';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type InputData = {
+  name: string;
+  email: string;
+  companyName: string;
+  catchPhrase: string;
 }
+
+const App: React.FC = () => {
+  const [inputData, setIputData] = useState<InputData[]>([]);
+  return (
+    <Router>
+      <div className="App-header">
+        <Routes>
+          <Route path="/" element={<List />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/edit/:id" element={<FormArea setIputData={setIputData}/>} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
