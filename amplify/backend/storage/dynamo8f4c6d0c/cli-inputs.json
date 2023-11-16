@@ -1,0 +1,26 @@
+{
+  "resourceName": "dynamo8f4c6d0c",
+  "tableName": "sample",
+  "partitionKey": {
+    "fieldName": "userId",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "title",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "title",
+      "partitionKey": {
+        "fieldName": "userId",
+        "fieldType": "number"
+      },
+      "sortKey": {
+        "fieldName": "title",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}
